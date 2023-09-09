@@ -1,20 +1,33 @@
-function clearScreen() {
-    document.getElementById("display").value = "";
+document.getElementById('clear').onclick = clearForm;
+
+
+const calculateTemp = () => {
+    const inputTemp = document.getElementById('temp').value;
+
+    const tempSelected = document.getElementById('temp_diff');
+    const valueTemp = temp_diff.options[tempSelected.selectedIndex].value;
+
+    // Celsius to Fahrenheit
+    const celToFah = (cel) => {
+        let fahrenheit = ((cel * 9 / 5) + 32).toFixed(1);
+        return fahrenheit;
+    }
+
+    // Fahrenheit to Celsius
+    const fahToCel = (fah) => {
+        let celsius = ((fah - 32) * 5 / 9).toFixed(1);
+        return celsius;
+    }
+
+    if (valueTemp == 'cel') {
+        document.getElementById("result").innerHTML = celToFah(inputTemp) + "&#176; Fahrenheit";
+    }
+    else {
+        document.getElementById("result").innerHTML = fahToCel(inputTemp) + "&#176; Celsius";
+    }
 }
-function fun(){
-    var a = document.getElementById("display").value;
-    var r = 1 / a;
-    document.getElementById("display").value = r;
-}
-function display(value) {
-    document.getElementBy IdleDeadline("display").value += value;
-}
-function calculate() {
-    var a = document.getElementById("display").value;
-    var b = eval(a);
-    document.getElementById("display").value = b;
-}
-function del() {
-    var input = document.getElementById("display");
-    input.value = input.value.substring(0, input.value.length-1);
+
+function clearForm() {
+    document.getElementById('fahrenheit').value = '';
+    document.getElementById('celsius').value = '';
 }
